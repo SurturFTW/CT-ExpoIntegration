@@ -5,7 +5,8 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -13,16 +14,92 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.clevertap.expoDemo"
+    },
+    "infoPlist": {
+      "ITSAppUsesNonExemptEncryption": false,
+      "NSLocationWhenInUseUsageDescription": "We need your location to provide better services."
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.clevertap.MyCleverTapApp",
+      "googleServicesFile": "./assets/google-services.json",
+      "permissions": [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.INTERNET",
+        "android.permission.POST_NOTIFICATIONS"
+      ]
     },
     "web": {
+      "bundler": "metro",
+      "output": "static",
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@clevertap/clevertap-expo-plugin",
+        {
+          "accountId": "TEST-865-ZRW-7K7Z",
+          "accountToken": "TEST-021-56b",
+          "accountRegion": "eu1",
+          "disableAppLaunchedEvent": false,
+          "encryptionLevel": 1,
+          "logLevel": 1,
+          "ios": {
+            "mode": "development",
+            "notifications": {
+              "enableRichMedia": true,
+              "enablePushImpression": true,
+              "iosPushAppGroup": "group.com.clevertap.expoDemo",
+              "notificationCategories": [
+                {
+                  "identifier": "CTNotification",
+                  "actions": []
+                }
+              ],
+              "infoPlist": {
+                "NSLocation*UsageDescription": "We use your location to provide location-based services."
+              }
+            }
+          },
+          "android": {
+            "registerActivityLifecycleCallbacks": true,
+            "features": {
+              "enablePush": true
+            }
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          },
+          "android": {
+            "enableProguardInReleaseBuilds": true
+          }
+        }
+      ],
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dbe8cccc-ad80-427c-83c3-78aec505b08f"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/dbe8cccc-ad80-427c-83c3-78aec505b08f"
     }
   }
 }
