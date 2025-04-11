@@ -40,3 +40,6 @@ android/
 
 # iOS
 ios/
+
+# VSCode
+.vscode/

@@ -15,11 +15,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.clevertap.expoDemo"
-    },
-    "infoPlist": {
-      "ITSAppUsesNonExemptEncryption": false,
-      "NSLocationWhenInUseUsageDescription": "We need your location to provide better services."
+      "bundleIdentifier": "com.demo.iosexamples",
+      "infoPlist": {
+        "NSLocationAlwaysUsageDescription": "We need your location even when the app is in the background.",
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show nearby places and features.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -89,11 +90,6 @@
     ],
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "dbe8cccc-ad80-427c-83c3-78aec505b08f"
-      }
     },
     "runtimeVersion": {
       "policy": "appVersion"
