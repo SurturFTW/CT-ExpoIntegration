@@ -1,10 +1,19 @@
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import Toast from "react-native-toast-message";
+import { useNavigation } from "@react-navigation/native";
 import CleverTap from "clevertap-react-native";
 
-import React, { useState } from "react";
-import { View, Text, TextInput, Button } from "react-native";
-import Toast from "react-native-toast-message";
-
 const Register = () => {
+  const navigation = useNavigation();
+
   const [user, setUser] = useState({
     name: "",
     identity: "",
@@ -26,15 +35,35 @@ const Register = () => {
     });
   };
 
+  const onlogin = () => {
+    const props = {
+      Name: "Shreyas Dhane",
+      Identity: "380",
+      Email: "shreyas.dhane@gmail.com",
+      Phone: "+14155551234",
+      Gender: "M",
+      "MSG-email": false,
+      "MSG-push": true,
+      "MSG-sms": false,
+      "MSG-whatsapp": true,
+    };
+
+    CleverTap.onUserLogin(props);
+    navigation.navigate("Dashboard", {
+      name: props.Name,
+      identity: props.Identity,
+    });
+    console.log("OUL Called");
+  };
+
   const handleSubmit = () => {
     const { name, identity, email, phone, gender } = user;
 
-    if (!name || !identity || !email || !phone || !gender) {
+    if (!name || !identity || !email) {
       showToast("error", "Please fill all fields");
       return;
     }
 
-    // CleverTap onUserLogin call
     CleverTap.onUserLogin({
       Name: name,
       Identity: identity,
@@ -43,17 +72,16 @@ const Register = () => {
       Gender: gender,
     });
 
-    Toast.show({
-      type: "success",
-      text1: "User logged in successfully!",
-      position: "bottom",
-      visibilityTime: 3000,
+    console.log("OUL Called");
+    navigation.navigate("Dashboard", {
+      name: props.Name,
+      identity: props.Identity,
     });
-    navigation.navigate("Dashboard");
   };
+
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 18, marginBottom: 10 }}>User Login</Text>
+    <View style={styles.container}>
+      <Text style={styles.header}>User Login</Text>
 
       {/* Name */}
       <TextInput
@@ -98,30 +126,60 @@ const Register = () => {
         maxLength={1}
       />
 
-      {/* Submit Button */}
-      <Button title="Login" onPress={handleSubmit} />
+      {/* Buttons */}
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
 
-      {/* Toast Component */}
+      <TouchableOpacity style={styles.button} onPress={onlogin}>
+        <Text style={styles.buttonText}>Dashboard</Text>
+      </TouchableOpacity>
+
+      {/* Toast */}
       <Toast />
     </View>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#f4f4f4",
+    padding: 20,
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+    color: "#333",
   },
   input: {
-    height: 40,
+    height: 45,
+    width: "100%",
     borderColor: "#ccc",
     borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    borderRadius: 8,
+    marginBottom: 15,
+    paddingHorizontal: 15,
+    borderRadius: 10,
+    fontSize: 16,
   },
-};
+  button: {
+    backgroundColor: "#4CAF50",
+    paddingVertical: 12,
+    width: "100%",
+    borderRadius: 10,
+    marginBottom: 15,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+});
 
 export default Register;

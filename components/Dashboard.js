@@ -1,13 +1,21 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+
+const CleverTap = require("clevertap-react-native");
+
+const handleNotification = () => {
+  console.log("Push Notification");
+  CleverTap.recordEvent("Notification Event");
+};
 
 const Dashboard = ({ route }) => {
-  const { identity } = route.params;
+  const name = route?.params?.name || "Guest";
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome {identity}</Text>
+      <Text style={styles.title}>Welcome {name}</Text>
 
-      <View style={styles.card}></View>
+      <Button title="Push Notification" onPress={handleNotification} />
     </View>
   );
 };

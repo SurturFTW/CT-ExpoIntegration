@@ -55,7 +55,7 @@
             "notifications": {
               "enableRichMedia": true,
               "enablePushImpression": true,
-              "iosPushAppGroup": "group.com.clevertap.expoDemo",
+              "iosPushAppGroup": "group.ctdemo.ios",
               "notificationCategories": [
                 {
                   "identifier": "CTNotification",
