@@ -55,16 +55,15 @@
             "notifications": {
               "enableRichMedia": true,
               "enablePushImpression": true,
+              "enablePushTemplate": true,
+              "enablePushInForeground": true,
               "iosPushAppGroup": "group.ctdemo.ios",
               "notificationCategories": [
                 {
                   "identifier": "CTNotification",
                   "actions": []
                 }
-              ],
-              "infoPlist": {
-                "NSLocation*UsageDescription": "We use your location to provide location-based services."
-              }
+              ]
             }
           },
           "android": {

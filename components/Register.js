@@ -11,6 +11,16 @@ import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
 import CleverTap from "clevertap-react-native";
 
+CleverTap.registerForPush();
+
+CleverTap.createNotificationChannel(
+  "CtRNS",
+  "Clever Tap React Native Testing",
+  "CT React Native Testing",
+  5,
+  true
+);
+
 const Register = () => {
   const navigation = useNavigation();
 
