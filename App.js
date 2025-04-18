@@ -11,9 +11,14 @@ import * as Notifications from "expo-notifications";
 import RegistrationForm from "./components/Register";
 import Dashboard from "./components/Dashboard";
 
+const CleverTap = require("clevertap-react-native");
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  CleverTap.registerForPush();
+  CleverTap.initializeInbox();
+
   const requestPermissions = async () => {
     try {
       // Request location permissions

@@ -57,19 +57,17 @@
               "enablePushImpression": true,
               "enablePushTemplate": true,
               "enablePushInForeground": true,
-              "iosPushAppGroup": "group.ctdemo.ios",
-              "notificationCategories": [
-                {
-                  "identifier": "CTNotification",
-                  "actions": []
-                }
-              ]
+              "iosPushAppGroup": "group.ctdemo.ios"
             }
           },
           "android": {
             "registerActivityLifecycleCallbacks": true,
             "features": {
-              "enablePush": true
+              "enablePush": true,
+              "enablePushTemplates": true,
+              "enableInApp": true,
+              "enableInbox": true,
+              "enableMediaForInAppsInbox": true
             }
           }
         }

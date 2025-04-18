@@ -9,17 +9,7 @@ import {
 } from "react-native";
 import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
-import CleverTap from "clevertap-react-native";
-
-CleverTap.registerForPush();
-
-CleverTap.createNotificationChannel(
-  "CtRNS",
-  "Clever Tap React Native Testing",
-  "CT React Native Testing",
-  5,
-  true
-);
+import * as appUtils from "../app-utils";
 
 const Register = () => {
   const navigation = useNavigation();
@@ -34,59 +24,6 @@ const Register = () => {
 
   const handleInputChange = (key, value) => {
     setUser((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const showToast = (type, message) => {
-    Toast.show({
-      type: type, // 'success' | 'error' | 'info'
-      text1: message,
-      position: "bottom",
-      visibilityTime: 3000,
-    });
-  };
-
-  const onlogin = () => {
-    const props = {
-      Name: "Shreyas Dhane",
-      Identity: "380",
-      Email: "shreyas.dhane@gmail.com",
-      Phone: "+14155551234",
-      Gender: "M",
-      "MSG-email": false,
-      "MSG-push": true,
-      "MSG-sms": false,
-      "MSG-whatsapp": true,
-    };
-
-    CleverTap.onUserLogin(props);
-    navigation.navigate("Dashboard", {
-      name: props.Name,
-      identity: props.Identity,
-    });
-    console.log("OUL Called");
-  };
-
-  const handleSubmit = () => {
-    const { name, identity, email, phone, gender } = user;
-
-    if (!name || !identity || !email) {
-      showToast("error", "Please fill all fields");
-      return;
-    }
-
-    CleverTap.onUserLogin({
-      Name: name,
-      Identity: identity,
-      Email: email,
-      Phone: phone,
-      Gender: gender,
-    });
-
-    console.log("OUL Called");
-    navigation.navigate("Dashboard", {
-      name: props.Name,
-      identity: props.Identity,
-    });
   };
 
   return (
@@ -137,11 +74,17 @@ const Register = () => {
       />
 
       {/* Buttons */}
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => appUtils.handleSubmit(navigation, user)}
+      >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={onlogin}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => appUtils.onlogin(navigation, user)}
+      >
         <Text style={styles.buttonText}>Dashboard</Text>
       </TouchableOpacity>
 
