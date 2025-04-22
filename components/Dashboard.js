@@ -25,7 +25,7 @@ const Dashboard = ({ route }) => {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.button} onPress={appUtils.pushevent}>
-        <Text style={styles.buttonText}>Push Event</Text>
+        <Text style={styles.buttonText}>Custom Event</Text>
       </TouchableOpacity>
 
       <TouchableOpacity

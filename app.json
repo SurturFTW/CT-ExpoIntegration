@@ -53,9 +53,7 @@
           "ios": {
             "mode": "development",
             "notifications": {
-              "enableRichMedia": true,
               "enablePushImpression": true,
-              "enablePushTemplate": true,
               "enablePushInForeground": true,
               "iosPushAppGroup": "group.ctdemo.ios"
             }

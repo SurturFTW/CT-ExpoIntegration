@@ -1,4 +1,6 @@
+import { Platform } from "react-native";
 import Toast from "react-native-toast-message";
+import userDefaults from "react-native-user-defaults";
 
 const CleverTap = require("clevertap-react-native");
 
@@ -29,6 +31,15 @@ export const onlogin = (navigation) => {
     name: props.Name,
     identity: props.Identity,
   });
+  userDefaults.set(
+    "CTProfileIdentity",
+    props.Identity,
+    "group.ctdemo.ios",
+    (err, data) => {
+      if (!err) console.log("Saved CTProfileIdentity:", props.Identity);
+    }
+  );
+
   console.log("OUL Called");
 };
 
@@ -56,6 +67,7 @@ export const handleSubmit = (navigation, user) => {
 };
 
 export const handleNotification = () => {
+  showToast("info", "Notification Event");
   console.log("Push Notification");
   CleverTap.recordEvent("Notification Event");
 };
@@ -68,12 +80,14 @@ export const getCleverTap_id = () => {
 };
 
 export const pushevent = () => {
-  showToast("success", "Event Recorded");
+  showToast("info", "Event Recorded");
+  console.log("Product Viewed Event Recorded");
   CleverTap.recordEvent("Product Viewed");
 };
 
 export const pushChargedEvent = () => {
   showToast("success", "Charged Event Recorded");
+  console.log("Charged Event Recorded");
 
   // Recording an Event
   CleverTap.recordChargedEvent(
@@ -93,6 +107,7 @@ export const pushChargedEvent = () => {
 // App Inbox
 export const show_appInbox = () => {
   CleverTap.recordEvent("App Inbox Event");
+  console.log("App Inbox Event Recorded");
   // Show Inbox
   CleverTap.showInbox({
     navBarTitle: "My App Inbox",
