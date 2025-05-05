@@ -13,6 +13,11 @@ export const showToast = (type, message) => {
   });
 };
 
+export const _handleOpenUrl = (event, from) => {
+  console.log("handleOpenUrl", event.url, from);
+  // showToast(`handleOpenUrl: ${event.url}, ${from}`);
+};
+
 export const onlogin = (navigation) => {
   const props = {
     Name: "Pushkar Sane",
@@ -140,3 +145,5 @@ export const get_UnreadMessageCount = () => {
 };
 
 // Listeners
+
+// CleverTap Event Handlers
