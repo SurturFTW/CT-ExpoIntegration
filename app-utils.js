@@ -1,6 +1,6 @@
-import { Platform } from "react-native";
 import Toast from "react-native-toast-message";
 import userDefaults from "react-native-user-defaults";
+import { useEffect } from "react";
 
 const CleverTap = require("clevertap-react-native");
 
@@ -145,5 +145,8 @@ export const get_UnreadMessageCount = () => {
 };
 
 // Listeners
+CleverTap.addListener(CleverTap.CleverTapPushNotificationClicked, (e) => {
+  console.log("listener called", e);
+});
 
 // CleverTap Event Handlers
