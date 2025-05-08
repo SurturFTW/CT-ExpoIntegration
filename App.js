@@ -10,6 +10,8 @@ import * as appUtils from "./app-utils";
 import RegistrationForm from "./components/Register";
 import Dashboard from "./components/Dashboard";
 
+import initializeCleverTapListeners from "./components/initializeListeners";
+
 const CleverTap = require("clevertap-react-native");
 
 const Stack = createNativeStackNavigator();
@@ -31,8 +33,15 @@ export default function App() {
   CleverTap.getInitialUrl((err, url) => {
     if (url) {
       appUtils._handleOpenUrl({ url }, "CleverTap");
+    } else {
+      console.log("No URL", err);
     }
   });
+
+  // Use in your component
+  useEffect(() => {
+    initializeCleverTapListeners();
+  }, []);
 
   return (
     <NavigationContainer>
