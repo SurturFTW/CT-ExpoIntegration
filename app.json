@@ -65,7 +65,8 @@
               "enablePushTemplates": true,
               "enableInApp": true,
               "enableInbox": true,
-              "enableMediaForInAppsInbox": true
+              "enableMediaForInAppsInbox": true,
+              "enableGoogleAdId": true
             }
           }
         }

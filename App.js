@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Alert, Linking } from "react-native";
+import { useEffect } from "react";
+import { Alert, PermissionsAndroid, Platform, Linking } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as appUtils from "./app-utils";
@@ -17,6 +17,40 @@ const CleverTap = require("clevertap-react-native");
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const requestPermissions = async () => {
+    if (Platform.OS === "android") {
+      try {
+        const granted = await PermissionsAndroid.requestMultiple([
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+          PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+        ]);
+
+        const locationGranted =
+          granted[PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION] ===
+            PermissionsAndroid.RESULTS.GRANTED &&
+          granted[PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION] ===
+            PermissionsAndroid.RESULTS.GRANTED;
+
+        const notificationsGranted =
+          granted[PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS] ===
+          PermissionsAndroid.RESULTS.GRANTED;
+
+        if (!locationGranted) {
+          Alert.alert("Location permission denied");
+        }
+
+        if (!notificationsGranted) {
+          Alert.alert("Notifications permission denied");
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    }
+  };
+  // Function Call to request permissions
+  requestPermissions();
+
   CleverTap.registerForPush();
   CleverTap.initializeInbox();
 

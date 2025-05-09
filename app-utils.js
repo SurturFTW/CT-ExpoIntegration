@@ -19,10 +19,10 @@ export const _handleOpenUrl = (event, from) => {
 
 export const onlogin = (navigation) => {
   const props = {
-    Name: "Pushkar Sane",
-    Identity: "380",
-    Email: "pushkar.sane@gmail.com",
-    Phone: "+14155551234",
+    Name: "Expo",
+    Identity: "999",
+    Email: "expo@gmail.com",
+    Phone: "+918744637221",
     Gender: "M",
     "MSG-email": false,
     "MSG-push": true,
