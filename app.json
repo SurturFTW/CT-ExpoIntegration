@@ -44,8 +44,8 @@
       [
         "@clevertap/clevertap-expo-plugin",
         {
-          "accountId": "TEST-865-ZRW-7K7Z",
-          "accountToken": "TEST-021-56b",
+          "accountId": "TEST-8WR-WZZ-476Z",
+          "accountToken": "TEST-110-20b",
           "accountRegion": "eu1",
           "disableAppLaunchedEvent": false,
           "encryptionLevel": 1,
@@ -53,7 +53,9 @@
           "ios": {
             "mode": "development",
             "notifications": {
+              "enableRichMedia": true,
               "enablePushImpression": true,
+              "enablePushTemplate": true,
               "enablePushInForeground": true,
               "iosPushAppGroup": "group.ctdemo.ios"
             }

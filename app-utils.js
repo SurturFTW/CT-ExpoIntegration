@@ -65,15 +65,16 @@ export const handleSubmit = (navigation, user) => {
 
   console.log("OUL Called");
   navigation.navigate("Dashboard", {
-    name: props.Name,
-    identity: props.Identity,
+    name: name,
+    identity: identity,
   });
 };
 
 export const handleNotification = () => {
   showToast("info", "Notification Event");
   console.log("Push Notification");
-  CleverTap.recordEvent("Notification Event");
+  // CleverTap.recordEvent("Notification Event");
+  CleverTap.recordEvent("Test Event");
 };
 
 export const getCleverTap_id = () => {

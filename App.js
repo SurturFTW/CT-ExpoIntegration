@@ -48,11 +48,13 @@ export default function App() {
       }
     }
   };
+
   // Function Call to request permissions
   requestPermissions();
 
   CleverTap.registerForPush();
   CleverTap.initializeInbox();
+  CleverTap.setDebugLevel(3); // Set debug level to 3 for verbose logging
 
   Linking.addEventListener("url", appUtils._handleOpenUrl);
   Linking.getInitialURL()
