@@ -44,8 +44,8 @@
       [
         "@clevertap/clevertap-expo-plugin",
         {
-          "accountId": "TEST-8WR-WZZ-476Z",
-          "accountToken": "TEST-110-20b",
+          "accountId": "TEST-865-ZRW-7K7Z",
+          "accountToken": "TEST-021-56b",
           "accountRegion": "eu1",
           "disableAppLaunchedEvent": false,
           "encryptionLevel": 1,
