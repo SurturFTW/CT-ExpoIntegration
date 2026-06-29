@@ -1,100 +1,102 @@
 {
-  "expo": {
-    "name": "ExpoIntegration",
-    "slug": "ExpoIntegration",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "disableIDFV": false,
-      "supportsTablet": true,
-      "bundleIdentifier": "com.demo.iosexamples",
-      "infoPlist": {
-        "NSLocationAlwaysUsageDescription": "We need your location even when the app is in the background.",
-        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show nearby places and features.",
-        "ITSAppUsesNonExemptEncryption": false
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.clevertap.MyCleverTapApp",
-      "googleServicesFile": "./assets/google-services.json",
-      "permissions": [
-        "android.permission.ACCESS_NETWORK_STATE",
-        "android.permission.INTERNET",
-        "android.permission.POST_NOTIFICATIONS"
-      ]
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      [
-        "@clevertap/clevertap-expo-plugin",
-        {
-          "accountId": "TEST-865-ZRW-7K7Z",
-          "accountToken": "TEST-021-56b",
-          "accountRegion": "eu1",
-          "disableAppLaunchedEvent": false,
-          "encryptionLevel": 1,
-          "logLevel": 3,
-          "ios": {
-            "mode": "development",
-            "notifications": {
-              "enableRichMedia": true,
-              "enablePushImpression": true,
-              "enablePushTemplate": true,
-              "enablePushInForeground": true,
-              "iosPushAppGroup": "group.ctdemo.ios"
-            }
-          },
-          "android": {
-            "registerActivityLifecycleCallbacks": true,
-            "features": {
-              "enablePush": true,
-              "enablePushTemplates": true,
-              "enableInApp": true,
-              "enableInbox": true,
-              "enableMediaForInAppsInbox": true,
-              "enableGoogleAdId": true
-            }
-          }
+    "expo": {
+        "name": "ExpoIntegration",
+        "slug": "ExpoIntegration",
+        "version": "2.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "scheme": "myapp",
+        "userInterfaceStyle": "automatic",
+        "newArchEnabled": true,
+        "splash": {
+            "image": "./assets/splash-icon.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "ios": {
+            "disableIDFV": false,
+            "supportsTablet": true,
+            "bundleIdentifier": "com.demo.iosexamples",
+            "infoPlist": {
+                "NSLocationAlwaysUsageDescription": "We need your location even when the app is in the background.",
+                "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show nearby places and features.",
+                "ITSAppUsesNonExemptEncryption": false
+            },
+            "appleTeamId": "G9355AB4R7"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.clevertap.MyCleverTapApp",
+            "googleServicesFile": "./assets/google-services.json",
+            "permissions": [
+                "android.permission.ACCESS_NETWORK_STATE",
+                "android.permission.INTERNET",
+                "android.permission.POST_NOTIFICATIONS"
+            ]
+        },
+        "web": {
+            "bundler": "metro",
+            "output": "static",
+            "favicon": "./assets/favicon.png"
+        },
+        "plugins": [
+            [
+                "@clevertap/clevertap-expo-plugin",
+                {
+                    "accountId": "TEST-865-ZRW-7K7Z",
+                    "accountToken": "TEST-021-56b",
+                    "accountRegion": "eu1",
+                    "disableAppLaunchedEvent": false,
+                    "encryptionLevel": 1,
+                    "logLevel": 3,
+                    "ios": {
+                        "mode": "development",
+                        "notifications": {
+                            "enableRichMedia": true,
+                            "enablePushImpression": true,
+                            "enablePushTemplate": true,
+                            "enablePushInForeground": true,
+                            "iosPushAppGroup": "group.ctdemo.ios"
+                        }
+                    },
+                    "android": {
+                        "registerActivityLifecycleCallbacks": true,
+                        "features": {
+                            "enablePush": true,
+                            "enablePushTemplates": true,
+                            "enableInApp": true,
+                            "enableInbox": true,
+                            "enableMediaForInAppsInbox": true,
+                            "enableGoogleAdId": true
+                        }
+                    }
+                }
+            ],
+            [
+                "expo-build-properties",
+                {
+                    "ios": {
+                        "useFrameworks": "static"
+                    },
+                    "android": {
+                        "enableProguardInReleaseBuilds": true,
+                        "enableMinifyInReleaseBuilds": true
+                    }
+                }
+            ],
+            "expo-router"
+        ],
+        "experiments": {
+            "typedRoutes": true
+        },
+        "runtimeVersion": {
+            "policy": "appVersion"
+        },
+        "updates": {
+            "url": "https://u.expo.dev/dbe8cccc-ad80-427c-83c3-78aec505b08f"
         }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          },
-          "android": {
-            "enableProguardInReleaseBuilds": true
-          }
-        }
-      ],
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/dbe8cccc-ad80-427c-83c3-78aec505b08f"
     }
-  }
 }
