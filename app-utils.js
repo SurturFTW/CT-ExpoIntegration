@@ -43,6 +43,14 @@ export const onlogin = (navigation) => {
             if (!err) console.log("Saved CTProfileIdentity:", props.Identity);
         },
     );
+    userDefaults.set(
+        "CTProfileEmail",
+        props.Email,
+        "group.ctdemo.ios",
+        (err, data) => {
+            if (!err) console.log("Saved CTProfileEmail:", props.Email);
+        },
+    );
 
     console.log("OUL Called");
 };
@@ -70,6 +78,14 @@ export const handleSubmit = (navigation, user) => {
         "group.ctdemo.ios",
         (err, data) => {
             if (!err) console.log("Saved CTProfileIdentity:", identity);
+        },
+    );
+    userDefaults.set(
+        "CTProfileEmail",
+        email,
+        "group.ctdemo.ios",
+        (err, data) => {
+            if (!err) console.log("Saved CTProfileEmail:", email);
         },
     );
     navigation.navigate("Dashboard", {
